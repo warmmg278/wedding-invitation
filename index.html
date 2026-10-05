@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>우리 결혼합니다</title>
+    <title>이현권 ♥ 박지윤 결혼합니다.</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,7 +37,6 @@
             font-family: 'Nanum Myeongjo', serif;
         }
 
-        /* Large English Cursive Titles (approx 2/3 of screen width via clamp) */
         .cursive-title {
             font-family: 'Great Vibes', cursive;
             font-size: clamp(3.5rem, 14vw, 5rem);
@@ -47,7 +46,6 @@
             font-weight: 400;
         }
 
-        /* Mobile Container Wrapper */
         .mobile-container {
             max-width: 420px;
             margin: 0 auto;
@@ -58,7 +56,6 @@
             position: relative;
         }
 
-        /* Scroll Animation Classes */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -70,7 +67,6 @@
             transform: translateY(0);
         }
 
-        /* Calendar Styling */
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
@@ -94,11 +90,9 @@
             font-weight: bold;
         }
 
-        /* Accordion Styling */
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
 
-        /* Custom Toast Notification */
         #toast {
             visibility: hidden;
             min-width: 250px;
@@ -122,46 +116,52 @@
             bottom: 50px;
         }
 
-        /* Faint Horizontal Divider */
         .section-divider-h {
             width: 70%;
             height: 1px;
             background-color: #F0EBE6;
             margin: 40px auto;
         }
+
+        /* 팝업 모달 열렸을 때 배경 스크롤 방지 */
+        .prevent-scroll {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
 
-<div class="mobile-container">
+<div class="mobile-container relative">
     
     <!-- 1. Top Section (Hero) -->
-    <section class="relative w-full h-[85vh] flex flex-col items-center justify-center overflow-hidden">
-        <!-- Main Image -->
-        <div class="absolute inset-0 z-0">
+    <!-- mb-32를 주어 텍스트가 아래로 밀려나도 다음 섹션과 겹치지 않게 확보 -->
+    <section class="relative w-full h-[85vh] flex flex-col items-center justify-center mb-32">
+        <!-- Main Image (overflow-hidden을 여기로 이동하여 사진만 잘리도록 설정) -->
+        <div class="absolute inset-0 z-0 overflow-hidden">
             <img src="images/main.jpg" alt="Main Wedding Photo" class="w-full h-full object-cover opacity-80" />
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#FDFCFB]"></div>
         </div>
         
-        <div class="z-10 text-center mt-auto pb-20 reveal">
+        <!-- Text Box (자신의 높이만큼 100% 아래로 이동: translate-y-full) -->
+        <div class="z-10 text-center mt-auto pb-0 translate-y-full reveal w-full">
             <p class="text-sm tracking-[0.3em] text-[#8A7B70] mb-4">WE ARE GETTING MARRIED</p>
             <h1 class="text-4xl myeongjo mb-6 tracking-widest text-[#5C4F45]">
                 이현권 <span class="text-xl mx-2">&</span> 박지윤
             </h1>
             <p class="text-[0.95rem] leading-loose text-[#5C4F45]">
                 2026년 11월 21일 토요일 오후 12시 30분<br>
-                서울 더 라움 웨딩홀 2층 마제스틱 볼룸
+                광명무역센터컨벤션 GTC
             </p>
         </div>
         
         <!-- Scroll indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50">
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50 z-0">
             <i class="ph ph-caret-down text-2xl"></i>
         </div>
     </section>
 
     <!-- 2. Greeting & Person Info -->
-    <section class="py-20 px-8 text-center reveal">
+    <section class="py-20 px-8 text-center reveal mt-12">
         <h2 class="cursive-title">Invitation</h2>
         <p class="text-[0.95rem] leading-relaxed mb-12 mt-6 text-[#5C4F45]">
             서로가 마주보며 다져온 사랑을<br>
@@ -172,7 +172,7 @@
             축복해 주시면 감사하겠습니다.
         </p>
 
-        <!-- Names UI: Horizontally aligned in a single row -->
+        <!-- Names UI -->
         <div class="flex flex-col gap-6 text-[1.05rem]">
             <div class="flex justify-center items-center whitespace-nowrap">
                 <div class="text-[#5C4F45] font-medium">이치호 · 정순단</div>
@@ -192,7 +192,7 @@
     <!-- 3. Date & Timer -->
     <section class="py-16 px-8 text-center reveal">
         <h2 class="cursive-title">Date</h2>
-        <p class="text-[1.1rem] myeongjo text-[#5C4F45] mb-2 mt-4">2027. 02. 20</p>
+        <p class="text-[1.1rem] myeongjo text-[#5C4F45] mb-2 mt-4">2026. 11. 21</p>
         <p class="text-sm text-[#8A7B70] mb-10">토요일 오후 12시 30분</p>
 
         <!-- Calendar -->
@@ -244,20 +244,25 @@
             <h2 class="cursive-title">Directions</h2>
         </div>
         
-        <!-- Map Placeholder -->
-        <div class="w-full h-56 bg-gray-200 rounded-xl overflow-hidden mb-4 mt-6 relative flex items-center justify-center shadow-sm">
-            <img src="https://placehold.co/400x300/E8E3DF/8A7B70?text=Map+Area" alt="Map Placeholder" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black bg-opacity-5"></div>
-            <p class="absolute text-sm text-gray-700 bg-white/90 px-4 py-1.5 rounded-full shadow-sm font-bold">지도 영역</p>
+        <!-- Map Area -->
+        <div class="w-full h-56 bg-gray-200 rounded-xl overflow-hidden mb-4 mt-6 relative shadow-sm border border-[#F2EBE4]">
+            <iframe 
+                src="https://maps.google.com/maps?q=광명무역센터컨벤션&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
         </div>
 
-        <!-- Navigation Buttons -->
+        <!-- Navigation Buttons (Kakao & Naver Search Link) -->
         <div class="flex gap-2">
-            <a href="javascript:void(0);" onclick="showToast('카카오맵 앱으로 이동합니다.')" class="flex-1 bg-[#FEE500] text-[#000000] py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition hover:bg-[#F4DC00] shadow-sm">
+            <a href="https://map.kakao.com/link/search/광명무역센터컨벤션" target="_blank" class="flex-1 bg-[#FEE500] text-[#000000] py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition hover:bg-[#F4DC00] shadow-sm">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="Kakao" class="w-4 h-4">
                 카카오맵
             </a>
-            <a href="javascript:void(0);" onclick="showToast('네이버 지도 앱으로 이동합니다.')" class="flex-1 bg-[#03C75A] text-white py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition hover:bg-[#02B350] shadow-sm">
+            <a href="https://map.naver.com/p/search/광명무역센터컨벤션" target="_blank" class="flex-1 bg-[#03C75A] text-white py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition hover:bg-[#02B350] shadow-sm">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Naver_Logotype.svg/1024px-Naver_Logotype.svg.png" alt="Naver" class="h-3">
                 네이버 지도
             </a>
@@ -267,23 +272,23 @@
         <div class="mt-6 bg-white p-6 rounded-2xl shadow-sm border border-[#F2EBE4] text-[0.95rem] leading-relaxed">
             <div class="mb-5">
                 <strong class="text-[#5C4F45] block mb-1">장소</strong>
-                <h3 class="font-bold text-[#5C4F45]">더 라움 웨딩홀 2층 마제스틱 볼룸</h3>
-                <p class="text-[#8A7B70] mt-1">서울 강남구 언주로 564</p>
-                <p class="text-[#8A7B70] mt-1 text-sm">TEL: 02-1234-5678</p>
+                <h3 class="font-bold text-[#5C4F45]">광명무역센터컨벤션 GTC</h3>
+                <p class="text-[#8A7B70] mt-1">경기 광명시 일직로 43</p>
+                <p class="text-[#8A7B70] mt-1 text-sm">TEL: 02-899-7400</p>
             </div>
             
             <div class="h-[1px] w-full bg-[#F2EBE4] my-4"></div>
             
             <div class="mb-5">
                 <strong class="text-[#5C4F45] block mb-1">지하철 안내</strong>
-                <p class="text-[#8A7B70]">2호선 역삼역 4번 출구 도보 5분</p>
+                <p class="text-[#8A7B70]">1호선 광명역 1번 출구 도보 10분</p>
             </div>
             
             <div class="h-[1px] w-full bg-[#F2EBE4] my-4"></div>
             
             <div>
                 <strong class="text-[#5C4F45] block mb-1">주차 안내</strong>
-                <p class="text-[#8A7B70]">본 건물 지하 1층~3층 주차장 이용 (2시간 무료 주차권 증정)</p>
+                <p class="text-[#8A7B70]">광명무역센터컨벤션 건물 주차장 이용 (2시간 무료 주차 지원)</p>
             </div>
         </div>
     </section>
@@ -299,7 +304,6 @@
             </p>
         </div>
 
-        <!-- Groom's Side Accordion -->
         <details class="mb-4 group bg-white rounded-2xl shadow-sm border border-[#F2EBE4] overflow-hidden">
             <summary class="p-5 flex justify-between items-center cursor-pointer font-bold text-[#5C4F45] select-none">
                 신랑측 계좌번호
@@ -309,21 +313,13 @@
                 <div class="flex justify-between items-center">
                     <div>
                         <p class="text-[0.95rem] font-bold text-[#5C4F45]">국민은행 123456-78-901234</p>
-                        <p class="text-[0.8rem] text-[#8A7B70] mt-1">예금주 : 김민수</p>
+                        <p class="text-[0.8rem] text-[#8A7B70] mt-1">예금주 : 이현권</p>
                     </div>
                     <button onclick="copyToClipboard('12345678901234')" class="text-xs bg-white border border-[#D4C4B7] text-[#5C4F45] px-4 py-2 rounded-lg hover:bg-[#F2EBE4] transition shadow-sm">복사</button>
-                </div>
-                <div class="flex justify-between items-center">
-                    <div>
-                        <p class="text-[0.95rem] font-bold text-[#5C4F45]">신한은행 110-123-456789</p>
-                        <p class="text-[0.8rem] text-[#8A7B70] mt-1">예금주 : 김창식 (혼주)</p>
-                    </div>
-                    <button onclick="copyToClipboard('110123456789')" class="text-xs bg-white border border-[#D4C4B7] text-[#5C4F45] px-4 py-2 rounded-lg hover:bg-[#F2EBE4] transition shadow-sm">복사</button>
                 </div>
             </div>
         </details>
 
-        <!-- Bride's Side Accordion -->
         <details class="group bg-white rounded-2xl shadow-sm border border-[#F2EBE4] overflow-hidden">
             <summary class="p-5 flex justify-between items-center cursor-pointer font-bold text-[#5C4F45] select-none">
                 신부측 계좌번호
@@ -333,16 +329,9 @@
                 <div class="flex justify-between items-center">
                     <div>
                         <p class="text-[0.95rem] font-bold text-[#5C4F45]">우리은행 1002-123-456789</p>
-                        <p class="text-[0.8rem] text-[#8A7B70] mt-1">예금주 : 박지혜</p>
+                        <p class="text-[0.8rem] text-[#8A7B70] mt-1">예금주 : 박지윤</p>
                     </div>
                     <button onclick="copyToClipboard('1002123456789')" class="text-xs bg-white border border-[#D4C4B7] text-[#5C4F45] px-4 py-2 rounded-lg hover:bg-[#F2EBE4] transition shadow-sm">복사</button>
-                </div>
-                <div class="flex justify-between items-center">
-                    <div>
-                        <p class="text-[0.95rem] font-bold text-[#5C4F45]">하나은행 123-456789-12345</p>
-                        <p class="text-[0.8rem] text-[#8A7B70] mt-1">예금주 : 박동건 (혼주)</p>
-                    </div>
-                    <button onclick="copyToClipboard('12345678912345')" class="text-xs bg-white border border-[#D4C4B7] text-[#5C4F45] px-4 py-2 rounded-lg hover:bg-[#F2EBE4] transition shadow-sm">복사</button>
                 </div>
             </div>
         </details>
@@ -354,19 +343,19 @@
     <section class="py-16 px-4 reveal mb-10 text-center">
         <h2 class="cursive-title mb-8">Gallery</h2>
         
-        <!-- 3x3 Square Grid: 3 columns, 4px gap -->
+        <!-- 갤러리 이미지 (클릭 기능 추가를 위한 클래스 gallery-img 적용) -->
         <div class="grid grid-cols-3 gap-[4px]">
-            <img src="images/gallery1.jpg" class="w-full h-full object-cover aspect-square bg-gray-100" alt="Gallery Image 1">
-            <img src="images/gallery2.jpg" class="w-full h-full object-cover aspect-square bg-gray-100" alt="Gallery Image 2">
-            <img src="images/gallery3.jpg" class="w-full h-full object-cover aspect-square bg-gray-100" alt="Gallery Image 3">
+            <img src="images/gallery1.jpg" class="gallery-img w-full h-full object-cover aspect-square bg-gray-100 cursor-pointer hover:opacity-90 transition" alt="Gallery 1">
+            <img src="images/gallery2.jpg" class="gallery-img w-full h-full object-cover aspect-square bg-gray-100 cursor-pointer hover:opacity-90 transition" alt="Gallery 2">
+            <img src="images/gallery3.jpg" class="gallery-img w-full h-full object-cover aspect-square bg-gray-100 cursor-pointer hover:opacity-90 transition" alt="Gallery 3">
             
-            <img src="images/gallery4.jpg" class="w-full h-full object-cover aspect-square bg-gray-100" alt="Gallery Image 4">
-            <img src="images/gallery5.jpg" class="w-full h-full object-cover aspect-square bg-gray-100" alt="Gallery Image 5">
-            <img src="images/gallery6.jpg" class="w-full h-full object-cover aspect-square bg-gray-100" alt="Gallery Image 6">
+            <img src="images/gallery4.jpg" class="gallery-img w-full h-full object-cover aspect-square bg-gray-100 cursor-pointer hover:opacity-90 transition" alt="Gallery 4">
+            <img src="images/gallery5.jpg" class="gallery-img w-full h-full object-cover aspect-square bg-gray-100 cursor-pointer hover:opacity-90 transition" alt="Gallery 5">
+            <img src="images/gallery6.jpg" class="gallery-img w-full h-full object-cover aspect-square bg-gray-100 cursor-pointer hover:opacity-90 transition" alt="Gallery 6">
             
-            <img src="images/gallery7.jpg" class="w-full h-full object-cover aspect-square bg-gray-100" alt="Gallery Image 7">
-            <img src="images/gallery8.jpg" class="w-full h-full object-cover aspect-square bg-gray-100" alt="Gallery Image 8">
-            <img src="images/gallery9.jpg" class="w-full h-full object-cover aspect-square bg-gray-100" alt="Gallery Image 9">
+            <img src="images/gallery7.jpg" class="gallery-img w-full h-full object-cover aspect-square bg-gray-100 cursor-pointer hover:opacity-90 transition" alt="Gallery 7">
+            <img src="images/gallery8.jpg" class="gallery-img w-full h-full object-cover aspect-square bg-gray-100 cursor-pointer hover:opacity-90 transition" alt="Gallery 8">
+            <img src="images/gallery9.jpg" class="gallery-img w-full h-full object-cover aspect-square bg-gray-100 cursor-pointer hover:opacity-90 transition" alt="Gallery 9">
         </div>
     </section>
 
@@ -378,6 +367,12 @@
 
     <!-- Custom Toast Element -->
     <div id="toast">복사되었습니다.</div>
+    
+    <!-- Gallery Modal (사진 확대용 팝업 창, 기본은 hidden 상태) -->
+    <div id="gallery-modal" class="fixed inset-0 z-50 hidden bg-black/95 items-center justify-center p-2 opacity-0 transition-opacity duration-300">
+        <button id="modal-close" class="absolute top-6 right-6 text-white text-4xl hover:text-gray-300 z-50">&times;</button>
+        <img id="modal-img" src="" class="max-w-full max-h-[90vh] object-contain rounded-sm select-none" alt="Enlarged Photo">
+    </div>
 
 </div>
 
@@ -430,9 +425,39 @@
             document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
             document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
         }, 1000);
+        
+        // 3. Gallery Modal Logic
+        const modal = document.getElementById('gallery-modal');
+        const modalImg = document.getElementById('modal-img');
+        const galleryImages = document.querySelectorAll('.gallery-img');
+        
+        // 이미지 클릭 시 모달 열기
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                modalImg.src = img.src; // 클릭한 이미지의 경로를 모달 이미지에 복사
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.classList.add('prevent-scroll'); // 배경 스크롤 방지
+                
+                // 애니메이션 효과를 위해 아주 약간의 지연 후 opacity 변경
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                }, 10);
+            });
+        });
+
+        // 모달 영역 아무데나 클릭하면 닫기
+        modal.addEventListener('click', () => {
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.classList.remove('prevent-scroll'); // 스크롤 원상복구
+            }, 300); // fade-out 시간만큼 대기
+        });
     });
 
-    // 3. Copy to Clipboard & Toast Logic
+    // 4. Copy to Clipboard & Toast Logic
     function showToast(message) {
         const toast = document.getElementById("toast");
         toast.innerText = message;
