@@ -406,7 +406,7 @@
         </div>
     </section>
 
-    <!-- 카카오톡 공유하기 버튼 영역 -->
+   <!-- 카카오톡 공유하기 버튼 영역 -->
     <section class="py-10 px-4 text-center">
         <button id="kakao-share-btn" class="bg-[#FEE500] text-[#000000] px-6 py-3 rounded-full text-sm font-bold shadow-sm inline-flex items-center gap-2 hover:bg-[#F4DC00] transition">
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="Kakao" class="w-4 h-4">
@@ -414,19 +414,21 @@
         </button>
     </section>
     
-    <!-- 카카오 SDK 스크립트 (</body> 바로 위에 추가) -->
+    <!-- 카카오 SDK 스크립트 -->
     <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js"></script>
     <script>
-        // 복사해온 JavaScript 키를 아래에 넣으세요
-        Kakao.init('9643d5609c04b167e527b59fb88cb74c'); 
-    
+        // 키 초기화 (중복 실행 방지)
+        if (!Kakao.isInitialized()) {
+            Kakao.init('9643d5609c04b167e527b59fb88cb74c');
+        }
+
         document.getElementById('kakao-share-btn').addEventListener('click', function() {
             Kakao.Share.sendDefault({
                 objectType: 'feed',
                 content: {
                     title: '이현권 ♥ 박지윤 결혼합니다.',
                     description: '27년 2월 20일 토요일 오후 4시 50분\n광명무역센터 3층',
-                    imageUrl: 'https://warmmg278.github.io/wedding-invitation/images/main.jpg', // 메인 이미지 썸네일
+                    imageUrl: 'https://warmmg278.github.io/wedding-invitation/images/main.jpg',
                     link: {
                         mobileWebUrl: 'https://warmmg278.github.io/wedding-invitation/',
                         webUrl: 'https://warmmg278.github.io/wedding-invitation/',
@@ -442,11 +444,12 @@
                     },
                     {
                         title: '위치 보기',
+                        // ⚠️ 외부 링크(map.kakao.com) 대신 본인 도메인 링크를 사용해야 4019 에러가 안 납니다!
                         link: {
-                            mobileWebUrl: 'https://warmmg278.github.io/wedding-invitation/#location',
-                            webUrl: 'https://warmmg278.github.io/wedding-invitation/#location',
+                            mobileWebUrl: 'https://warmmg278.github.io/wedding-invitation/',
+                            webUrl: 'https://warmmg278.github.io/wedding-invitation/',
                         },
-                    }
+                    },
                 ],
             });
         });
