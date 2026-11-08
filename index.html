@@ -54,7 +54,7 @@
             background-color: var(--bg-color);
             min-height: 100vh;
             box-shadow: 0 0 20px rgba(0,0,0,0.05);
-            overflow-x: hidden; /* 배경 꽃 이미지가 삐져나가지 않도록 */
+            overflow-x: hidden;
             position: relative;
         }
 
@@ -127,22 +127,25 @@
 
 <div class="mobile-container">
     
-    <!-- [꽃 배경 장식 1] 우측 상단 쯤에 은은하게 깔리는 꽃 -->
+    <!-- [꽃 배경 장식 1] 우측 상단 -->
     <img src="images/flower1.png" alt="" class="absolute top-[80vh] -right-16 w-48 opacity-40 mix-blend-multiply pointer-events-none z-0 rotate-12" onerror="this.style.display='none'">
     
-    <!-- [꽃 배경 장식 2] 달력과 지도 사이에 깔리는 잎사귀 -->
+    <!-- [꽃 배경 장식 2] 달력과 지도 사이 -->
     <img src="images/flower2.png" alt="" class="absolute top-[170vh] -left-16 w-56 opacity-30 mix-blend-multiply pointer-events-none z-0 -rotate-12" onerror="this.style.display='none'">
 
     <!-- 1. Top Section (Hero) -->
-    <!-- 이미지와 글씨가 겹치지 않도록 높이를 조정하고 분리했습니다 -->
-    <section class="w-full flex flex-col items-center mb-16 relative">
+    <section class="w-full flex flex-col items-center mb-12 relative">
         
         <!-- Main Image Container -->
-        <div class="w-full h-[65vh] relative overflow-hidden rounded-b-[2rem] shadow-sm">
+        <div class="w-full h-[65vh] relative overflow-hidden">
             <img src="images/main.jpg" alt="Main Wedding Photo" class="w-full h-full object-cover" />
-            <!-- 사진 윗부분을 살짝 어둡게/밝게 해서 Wedding Day 글씨가 잘 보이게 하는 효과 -->
+            
+            <!-- 상단 그라데이션 (Wedding Day 텍스트 가독성 확보) -->
             <div class="absolute inset-0 bg-black/10"></div>
             <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/20 to-transparent"></div>
+            
+            <!-- 하단 그라데이션 (배경색인 #FDFCF9과 자연스럽게 이어지도록 페이드 아웃) -->
+            <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#FDFCF9] via-[#FDFCF9]/80 to-transparent"></div>
             
             <!-- Top Text: Wedding Day (사진 위) -->
             <div class="absolute top-12 inset-x-0 text-center z-10 reveal active">
@@ -150,8 +153,8 @@
             </div>
         </div>
         
-        <!-- Bottom Text (사진 바깥 아래로 이동) -->
-        <div class="z-10 text-center w-full mt-10 px-6 reveal active relative">
+        <!-- Bottom Text (사진 바깥 아래에 위치 - 겹치지 않음) -->
+        <div class="z-10 text-center w-full mt-4 px-6 reveal active relative">
             <p class="text-[0.95rem] font-bold text-[var(--accent)] mb-3 tracking-widest">저희 결혼합니다!</p>
             <h1 class="text-[1.7rem] myeongjo mb-5 tracking-wider text-[var(--text-main)]">
                 이현권 <span class="text-xl mx-2 text-[var(--accent)]">&</span> 박지윤
@@ -403,25 +406,21 @@
     <!-- Custom Toast Element -->
     <div id="toast">복사되었습니다.</div>
     
-    <!-- Gallery Modal (화살표 추가 및 클릭 이벤트 분리) -->
+    <!-- Gallery Modal -->
     <div id="gallery-modal" class="fixed inset-0 z-[100] hidden bg-black/95 flex-col items-center justify-center opacity-0 transition-opacity duration-300">
         
-        <!-- 닫기 버튼 -->
         <button id="modal-close" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 z-[110] w-12 h-12 flex items-center justify-center">
             &times;
         </button>
         
-        <!-- 이전 사진 화살표 (좌측) -->
         <button id="modal-prev" class="absolute left-2 top-1/2 -translate-y-1/2 text-white/60 hover:text-white z-[110] p-4 text-5xl">
             &#8249;
         </button>
         
-        <!-- 다음 사진 화살표 (우측) -->
         <button id="modal-next" class="absolute right-2 top-1/2 -translate-y-1/2 text-white/60 hover:text-white z-[110] p-4 text-5xl">
             &#8250;
         </button>
 
-        <!-- 이미지 영역 -->
         <div class="w-full h-full flex items-center justify-center p-4 relative">
             <img id="modal-img" src="" class="max-w-full max-h-[85vh] object-contain rounded-sm select-none" alt="Enlarged Photo">
         </div>
@@ -479,7 +478,7 @@
             document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
         }, 1000);
         
-        // 3. Gallery Modal Logic (Swipe & Arrows added)
+        // 3. Gallery Modal Logic
         const modal = document.getElementById('gallery-modal');
         const modalImg = document.getElementById('modal-img');
         const btnPrev = document.getElementById('modal-prev');
@@ -489,16 +488,14 @@
         const galleryImages = Array.from(document.querySelectorAll('.gallery-img'));
         let currentIndex = 0;
         
-        // 모달 이미지 갱신 함수
         function updateModalImage(index) {
-            modalImg.style.opacity = '0'; // 페이드 아웃 효과
+            modalImg.style.opacity = '0'; 
             setTimeout(() => {
                 modalImg.src = galleryImages[index].src;
-                modalImg.style.opacity = '1'; // 페이드 인 효과
+                modalImg.style.opacity = '1'; 
             }, 150);
         }
 
-        // 사진 클릭 시 모달 열기
         galleryImages.forEach((img, index) => {
             img.addEventListener('click', () => {
                 currentIndex = index;
@@ -514,22 +511,19 @@
             });
         });
 
-        // 이전/다음 버튼 클릭
         btnPrev.addEventListener('click', (e) => {
-            e.stopPropagation(); // 모달 닫기 방지
+            e.stopPropagation(); 
             currentIndex = (currentIndex === 0) ? galleryImages.length - 1 : currentIndex - 1;
             updateModalImage(currentIndex);
         });
 
         btnNext.addEventListener('click', (e) => {
-            e.stopPropagation(); // 모달 닫기 방지
+            e.stopPropagation(); 
             currentIndex = (currentIndex === galleryImages.length - 1) ? 0 : currentIndex + 1;
             updateModalImage(currentIndex);
         });
 
-        // 모달 닫기 기능 (배경이나 X버튼 클릭 시)
         function closeModal(e) {
-            // 이미지 자체나 화살표를 눌렀을 때는 닫히지 않도록 예외 처리
             if (e.target === modalImg || e.target === btnPrev || e.target === btnNext) return;
             
             modal.classList.add('opacity-0');
@@ -543,7 +537,6 @@
         modal.addEventListener('click', closeModal);
         btnClose.addEventListener('click', closeModal);
 
-        // 모바일 스와이프 기능 (터치로 좌우 넘기기)
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -557,12 +550,10 @@
         }, { passive: true });
 
         function handleSwipe() {
-            const swipeThreshold = 50; // 이 픽셀 이상 움직여야 스와이프로 인정
+            const swipeThreshold = 50; 
             if (touchStartX - touchEndX > swipeThreshold) {
-                // 오른쪽에서 왼쪽으로 스와이프 -> 다음 사진
                 btnNext.click();
             } else if (touchEndX - touchStartX > swipeThreshold) {
-                // 왼쪽에서 오른쪽으로 스와이프 -> 이전 사진
                 btnPrev.click();
             }
         }
