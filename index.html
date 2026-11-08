@@ -408,20 +408,25 @@
 
    <!-- 카카오톡 공유하기 버튼 영역 -->
     <section class="py-10 px-4 text-center">
-        <button id="kakao-share-btn" class="bg-[#FEE500] text-[#000000] px-6 py-3 rounded-full text-sm font-bold shadow-sm inline-flex items-center gap-2 hover:bg-[#F4DC00] transition">
+        <button id="kakao-share-btn" type="button" class="bg-[#FEE500] text-[#000000] px-6 py-3 rounded-full text-sm font-bold shadow-sm inline-flex items-center gap-2 hover:bg-[#F4DC00] transition">
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="Kakao" class="w-4 h-4">
             카카오톡으로 청첩장 보내기
         </button>
     </section>
-    
+
     <!-- 카카오 SDK 스크립트 -->
     <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js"></script>
     <script>
-        // 키 초기화 (중복 실행 방지)
-        if (!Kakao.isInitialized()) {
-            Kakao.init('9643d5609c04b167e527b59fb88cb74c');
+        // 1. 카카오 초기화 (JavaScript 키 검증)
+        try {
+            if (!Kakao.isInitialized()) {
+                Kakao.init('9643d5609c04b167e527b59fb88cb74c');
+            }
+        } catch (e) {
+            console.error("Kakao init error:", e);
         }
 
+        // 2. 카카오톡 공유 이벤트 리스너
         document.getElementById('kakao-share-btn').addEventListener('click', function() {
             Kakao.Share.sendDefault({
                 objectType: 'feed',
@@ -430,24 +435,23 @@
                     description: '27년 2월 20일 토요일 오후 4시 50분\n광명무역센터 3층',
                     imageUrl: 'https://warmmg278.github.io/wedding-invitation/images/main.jpg',
                     link: {
-                        mobileWebUrl: 'https://warmmg278.github.io/wedding-invitation/',
-                        webUrl: 'https://warmmg278.github.io/wedding-invitation/',
+                        mobileWebUrl: window.location.href,
+                        webUrl: window.location.href,
                     },
                 },
                 buttons: [
                     {
                         title: '청첩장 보기',
                         link: {
-                            mobileWebUrl: 'https://warmmg278.github.io/wedding-invitation/',
-                            webUrl: 'https://warmmg278.github.io/wedding-invitation/',
+                            mobileWebUrl: window.location.href,
+                            webUrl: window.location.href,
                         },
                     },
                     {
                         title: '위치 보기',
-                        // ⚠️ 외부 링크(map.kakao.com) 대신 본인 도메인 링크를 사용해야 4019 에러가 안 납니다!
                         link: {
-                            mobileWebUrl: 'https://warmmg278.github.io/wedding-invitation/',
-                            webUrl: 'https://warmmg278.github.io/wedding-invitation/',
+                            mobileWebUrl: window.location.href,
+                            webUrl: window.location.href,
                         },
                     },
                 ],
