@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>이현권 ♥ 박지윤 결혼합니다.</title>
+    <title>우리 결혼합니다</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,15 +19,17 @@
 
     <style>
         :root {
-            --bg-color: #FDFCFB;
-            --text-main: #5C4F45;
-            --text-light: #8A7B70;
-            --accent: #D4C4B7;
-            --accent-light: #F2EBE4;
+            /* exam2.jpg 기반의 은은한 세이지 그린 & 아이보리 톤 */
+            --bg-color: #FDFCF9; 
+            --text-main: #4C5749; 
+            --text-light: #83907F;
+            --accent: #8DA38A; 
+            --accent-light: #E3EAE2;
         }
 
         body {
-            background-color: #EBEBEB;
+            /* 바깥 배경색을 연두빛으로 설정 */
+            background-color: #E6EAE4;
             font-family: 'Gowun Dodum', sans-serif;
             color: var(--text-main);
             -webkit-font-smoothing: antialiased;
@@ -37,10 +39,11 @@
             font-family: 'Nanum Myeongjo', serif;
         }
 
+        /* 80% 사이즈로 줄인 영문 필기체 소제목 */
         .cursive-title {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(3.5rem, 14vw, 5rem);
-            color: #C0AE9F;
+            font-size: clamp(2.8rem, 11.2vw, 4rem);
+            color: var(--accent);
             margin-bottom: 1rem;
             line-height: 1;
             font-weight: 400;
@@ -79,16 +82,6 @@
             font-size: 0.8rem;
             margin-bottom: 10px;
         }
-        .calendar-day.wedding-day {
-            background-color: var(--accent);
-            color: white;
-            border-radius: 50%;
-            width: 28px;
-            height: 28px;
-            line-height: 28px;
-            margin: 0 auto;
-            font-weight: bold;
-        }
 
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
@@ -96,7 +89,7 @@
         #toast {
             visibility: hidden;
             min-width: 250px;
-            background-color: rgba(92, 79, 69, 0.9);
+            background-color: rgba(76, 87, 73, 0.9);
             color: #fff;
             text-align: center;
             border-radius: 8px;
@@ -119,11 +112,10 @@
         .section-divider-h {
             width: 70%;
             height: 1px;
-            background-color: #F0EBE6;
+            background-color: var(--accent-light);
             margin: 40px auto;
         }
 
-        /* 팝업 모달 열렸을 때 배경 스크롤 방지 */
         .prevent-scroll {
             overflow: hidden;
         }
@@ -133,37 +125,42 @@
 
 <div class="mobile-container relative">
     
-    <!-- 1. Top Section (Hero) -->
-    <!-- mb-32를 주어 텍스트가 아래로 밀려나도 다음 섹션과 겹치지 않게 확보 -->
-    <section class="relative w-full h-[85vh] flex flex-col items-center justify-center mb-32">
-        <!-- Main Image (overflow-hidden을 여기로 이동하여 사진만 잘리도록 설정) -->
+    <!-- 1. Top Section (Hero - exam1.jpg 스타일) -->
+    <section class="relative w-full h-[90vh] flex flex-col justify-between items-center mb-16 pt-12 pb-16">
+        <!-- Main Image -->
         <div class="absolute inset-0 z-0 overflow-hidden">
-            <img src="images/main.jpg" alt="Main Wedding Photo" class="w-full h-full object-cover opacity-80" />
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#FDFCFB]"></div>
+            <img src="images/main.jpg" alt="Main Wedding Photo" class="w-full h-full object-cover" />
+            <!-- 위아래에 하얀색 그라데이션을 살짝 주어 글씨가 잘 보이게 함 -->
+            <div class="absolute inset-0 bg-gradient-to-b from-white/70 via-transparent to-white/90"></div>
         </div>
         
-        <!-- Text Box (자신의 높이만큼 100% 아래로 이동: translate-y-full) -->
-        <div class="z-10 text-center mt-auto pb-0 translate-y-full reveal w-full">
-            <p class="text-sm tracking-[0.3em] text-[#8A7B70] mb-4">WE ARE GETTING MARRIED</p>
-            <h1 class="text-4xl myeongjo mb-6 tracking-widest text-[#5C4F45]">
-                이현권 <span class="text-xl mx-2">&</span> 박지윤
+        <!-- Top Text: Wedding Day -->
+        <div class="z-10 text-center w-full reveal active">
+            <h2 class="font-['Great_Vibes'] text-6xl text-[var(--accent)]">Wedding Day</h2>
+        </div>
+        
+        <!-- Bottom Text -->
+        <div class="z-10 text-center w-full reveal active mt-auto">
+            <p class="text-[0.95rem] font-bold text-[var(--text-main)] mb-3">저희 결혼합니다!</p>
+            <h1 class="text-3xl myeongjo mb-4 tracking-wider text-[var(--text-main)]">
+                이현권 <span class="text-lg mx-1">&</span> 박지윤
             </h1>
-            <p class="text-[0.95rem] leading-loose text-[#5C4F45]">
-                2026년 11월 21일 토요일 오후 12시 30분<br>
-                광명무역센터컨벤션 GTC
+            <p class="text-[0.9rem] leading-loose text-[var(--text-main)]">
+                2027년 2월 20일 토요일 오후 4시 50분<br>
+                광명무역센터 3층
             </p>
         </div>
         
         <!-- Scroll indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50 z-0">
-            <i class="ph ph-caret-down text-2xl"></i>
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce opacity-40 z-0">
+            <i class="ph ph-caret-down text-xl"></i>
         </div>
     </section>
 
     <!-- 2. Greeting & Person Info -->
-    <section class="py-20 px-8 text-center reveal mt-12">
+    <section class="py-16 px-8 text-center reveal">
         <h2 class="cursive-title">Invitation</h2>
-        <p class="text-[0.95rem] leading-relaxed mb-12 mt-6 text-[#5C4F45]">
+        <p class="text-[0.95rem] leading-relaxed mb-12 mt-6">
             서로가 마주보며 다져온 사랑을<br>
             이제 함께 한 곳을 바라보며 걸어갈 수 있는<br>
             큰 사랑으로 키우고자 합니다.<br>
@@ -172,17 +169,17 @@
             축복해 주시면 감사하겠습니다.
         </p>
 
-        <!-- Names UI -->
+        <!-- Names UI ('아들', '딸'로 변경) -->
         <div class="flex flex-col gap-6 text-[1.05rem]">
             <div class="flex justify-center items-center whitespace-nowrap">
-                <div class="text-[#5C4F45] font-medium">이치호 · 정순단</div>
-                <div class="text-sm text-[#8A7B70] mx-3">의 차남</div>
-                <div class="font-bold text-[#5C4F45] text-lg">이현권</div>
+                <div class="font-medium">이치호 · 정순단</div>
+                <div class="text-sm text-[var(--text-light)] mx-3">의 아들</div>
+                <div class="font-bold text-lg">이현권</div>
             </div>
             <div class="flex justify-center items-center whitespace-nowrap">
-                <div class="text-[#5C4F45] font-medium">박영순 · 유은숙</div>
-                <div class="text-sm text-[#8A7B70] mx-3">의 장녀</div>
-                <div class="font-bold text-[#5C4F45] text-lg">박지윤</div>
+                <div class="font-medium">박영순 · 유은숙</div>
+                <div class="text-sm text-[var(--text-light)] mx-3">의 딸</div>
+                <div class="font-bold text-lg">박지윤</div>
             </div>
         </div>
     </section>
@@ -192,42 +189,49 @@
     <!-- 3. Date & Timer -->
     <section class="py-16 px-8 text-center reveal">
         <h2 class="cursive-title">Date</h2>
-        <p class="text-[1.1rem] myeongjo text-[#5C4F45] mb-2 mt-4">2026. 11. 21</p>
-        <p class="text-sm text-[#8A7B70] mb-10">토요일 오후 12시 30분</p>
+        <p class="text-[1.1rem] myeongjo mb-2 mt-4">2027. 02. 20</p>
+        <p class="text-sm text-[var(--text-light)] mb-10">토요일 오후 4시 50분</p>
 
-        <!-- Calendar -->
-        <div class="bg-white p-6 rounded-2xl shadow-sm border border-[#F2EBE4] mb-10 mx-auto max-w-[280px]">
+        <!-- Calendar (2027년 2월, 20일에 연두색 하트 배경) -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-[var(--accent-light)] mb-10 mx-auto max-w-[280px]">
             <div class="calendar-grid calendar-header">
                 <div class="text-red-400">일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>
             </div>
             <div class="calendar-grid">
-                <div class="text-red-400">1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
-                <div class="text-red-400">8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div>
-                <div class="text-red-400">15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div class="wedding-day shadow-md">21</div>
-                <div class="text-red-400">22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div><div>28</div>
-                <div class="text-red-400">29</div><div>30</div><div></div><div></div><div></div><div></div><div></div>
+                <div class="text-red-400"></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div>
+                <div class="text-red-400">7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div>
+                <div class="text-red-400">14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div>
+                
+                <!-- 20일 하트 마킹 -->
+                <div class="relative flex items-center justify-center">
+                    <svg class="absolute w-8 h-8 text-[var(--accent)] z-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="currentColor" d="M240,98a57.63,57.63,0,0,1-17,41L133.7,229.62a11.84,11.84,0,0,1-15.41,0L29,139a57.63,57.63,0,0,1-17-41A58.14,58.14,0,0,1,70,40c16.94,0,32.65,9,42,24,9.35-15,25.06-24,42-24A58.14,58.14,0,0,1,240,98Z"></path></svg>
+                    <span class="relative z-10 text-white font-bold text-sm">20</span>
+                </div>
+                
+                <div class="text-red-400">21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div>
+                <div class="text-red-400">28</div><div></div><div></div><div></div><div></div><div></div><div></div>
             </div>
         </div>
 
         <!-- Countdown Timer -->
-        <div class="bg-[#FBF9F6] border border-[#F2EBE4] rounded-2xl py-6 px-4">
-            <p class="text-sm mb-4 text-[#8A7B70]">예식일까지</p>
-            <div class="flex justify-center items-end gap-3 text-[#5C4F45]">
+        <div class="bg-[var(--accent-light)]/30 border border-[var(--accent-light)] rounded-2xl py-6 px-4">
+            <p class="text-sm mb-4 text-[var(--text-light)]">예식일까지</p>
+            <div class="flex justify-center items-end gap-3 text-[var(--text-main)]">
                 <div class="flex flex-col items-center">
                     <span id="days" class="text-3xl myeongjo">00</span>
                     <span class="text-[0.7rem] mt-1">Days</span>
                 </div>
-                <span class="text-xl pb-5 text-[#C0AE9F]">:</span>
+                <span class="text-xl pb-5 text-[var(--accent)]">:</span>
                 <div class="flex flex-col items-center">
                     <span id="hours" class="text-3xl myeongjo">00</span>
                     <span class="text-[0.7rem] mt-1">Hour</span>
                 </div>
-                <span class="text-xl pb-5 text-[#C0AE9F]">:</span>
+                <span class="text-xl pb-5 text-[var(--accent)]">:</span>
                 <div class="flex flex-col items-center">
                     <span id="minutes" class="text-3xl myeongjo">00</span>
                     <span class="text-[0.7rem] mt-1">Min</span>
                 </div>
-                <span class="text-xl pb-5 text-[#C0AE9F]">:</span>
+                <span class="text-xl pb-5 text-[var(--accent)]">:</span>
                 <div class="flex flex-col items-center">
                     <span id="seconds" class="text-3xl myeongjo">00</span>
                     <span class="text-[0.7rem] mt-1">Sec</span>
@@ -245,9 +249,9 @@
         </div>
         
         <!-- Map Area -->
-        <div class="w-full h-56 bg-gray-200 rounded-xl overflow-hidden mb-4 mt-6 relative shadow-sm border border-[#F2EBE4]">
+        <div class="w-full h-56 bg-gray-200 rounded-xl overflow-hidden mb-4 mt-6 relative shadow-sm border border-[var(--accent-light)]">
             <iframe 
-                src="https://maps.google.com/maps?q=광명무역센터컨벤션&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                src="https://maps.google.com/maps?q=광명무역센터&t=&z=16&ie=UTF8&iwloc=&output=embed" 
                 width="100%" 
                 height="100%" 
                 style="border:0;" 
@@ -256,39 +260,43 @@
             </iframe>
         </div>
 
-        <!-- Navigation Buttons (Kakao & Naver Search Link) -->
+        <!-- Navigation Buttons -->
         <div class="flex gap-2">
-            <a href="https://map.kakao.com/link/search/광명무역센터컨벤션" target="_blank" class="flex-1 bg-[#FEE500] text-[#000000] py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition hover:bg-[#F4DC00] shadow-sm">
+            <a href="https://map.kakao.com/link/search/광명무역센터" target="_blank" class="flex-1 bg-[#FEE500] text-[#000000] py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition hover:bg-[#F4DC00] shadow-sm">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="Kakao" class="w-4 h-4">
                 카카오맵
             </a>
-            <a href="https://map.naver.com/p/search/광명무역센터컨벤션" target="_blank" class="flex-1 bg-[#03C75A] text-white py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition hover:bg-[#02B350] shadow-sm">
+            <a href="https://map.naver.com/p/search/광명무역센터" target="_blank" class="flex-1 bg-[#03C75A] text-white py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition hover:bg-[#02B350] shadow-sm">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Naver_Logotype.svg/1024px-Naver_Logotype.svg.png" alt="Naver" class="h-3">
                 네이버 지도
             </a>
         </div>
         
         <!-- Unified White Container for Information -->
-        <div class="mt-6 bg-white p-6 rounded-2xl shadow-sm border border-[#F2EBE4] text-[0.95rem] leading-relaxed">
+        <div class="mt-6 bg-white p-6 rounded-2xl shadow-sm border border-[var(--accent-light)] text-[0.95rem] leading-relaxed">
             <div class="mb-5">
-                <strong class="text-[#5C4F45] block mb-1">장소</strong>
-                <h3 class="font-bold text-[#5C4F45]">광명무역센터컨벤션 GTC</h3>
-                <p class="text-[#8A7B70] mt-1">경기 광명시 일직로 43</p>
-                <p class="text-[#8A7B70] mt-1 text-sm">TEL: 02-899-7400</p>
+                <strong class="block mb-1">장소</strong>
+                <h3 class="font-bold text-lg">광명무역센터 3층</h3>
+                <p class="text-[var(--text-light)] mt-1">경기도 광명시 일직로 72</p>
+                <p class="text-[var(--text-light)] mt-1 text-sm">TEL: 02-899-3535</p>
             </div>
             
-            <div class="h-[1px] w-full bg-[#F2EBE4] my-4"></div>
+            <div class="h-[1px] w-full bg-[var(--accent-light)] my-4"></div>
             
             <div class="mb-5">
-                <strong class="text-[#5C4F45] block mb-1">지하철 안내</strong>
-                <p class="text-[#8A7B70]">1호선 광명역 1번 출구 도보 10분</p>
+                <strong class="block mb-1">지하철 안내</strong>
+                <p class="text-[var(--text-light)]">1호선 광명역 1번 출구 도보 10분</p>
+                <p class="text-[var(--text-light)] mt-2">7호선 철산역 1번 출구 > 버스 이용 추천</p>
+                <a href="https://www.gtcwed.co.kr/location/" target="_blank" class="inline-block mt-2 text-[var(--accent)] font-medium underline text-sm hover:text-[var(--text-main)] transition">
+                    ▶ 오시는 길 자세히 보기 (클릭)
+                </a>
             </div>
             
-            <div class="h-[1px] w-full bg-[#F2EBE4] my-4"></div>
+            <div class="h-[1px] w-full bg-[var(--accent-light)] my-4"></div>
             
             <div>
-                <strong class="text-[#5C4F45] block mb-1">주차 안내</strong>
-                <p class="text-[#8A7B70]">광명무역센터컨벤션 건물 주차장 이용 (2시간 무료 주차 지원)</p>
+                <strong class="block mb-1">주차 안내</strong>
+                <p class="text-[var(--text-light)]">광명무역센터 건물 주차장 이용 (2시간 무료 주차 지원)</p>
             </div>
         </div>
     </section>
@@ -299,39 +307,66 @@
     <section class="py-16 px-6 reveal">
         <div class="text-center">
             <h2 class="cursive-title">Registry</h2>
-            <p class="text-center text-sm mb-10 text-[#8A7B70] leading-relaxed mt-4">
+            <p class="text-center text-sm mb-10 text-[var(--text-light)] leading-relaxed mt-4">
                 참석이 어려우신 분들을 위해<br>계좌번호를 기재하였습니다.<br>너른 양해 부탁드립니다.
             </p>
         </div>
 
-        <details class="mb-4 group bg-white rounded-2xl shadow-sm border border-[#F2EBE4] overflow-hidden">
-            <summary class="p-5 flex justify-between items-center cursor-pointer font-bold text-[#5C4F45] select-none">
-                신랑측 계좌번호
-                <i class="ph ph-caret-down transition-transform group-open:rotate-180 text-[#8A7B70]"></i>
+        <!-- 신랑측 계좌번호 -->
+        <details class="mb-4 group bg-white rounded-2xl shadow-sm border border-[var(--accent-light)] overflow-hidden">
+            <summary class="p-5 flex justify-between items-center cursor-pointer font-bold select-none">
+                신랑측 마음 전하실 곳
+                <i class="ph ph-caret-down transition-transform group-open:rotate-180 text-[var(--text-light)]"></i>
             </summary>
-            <div class="p-5 bg-[#FBF9F6] border-t border-[#F2EBE4] space-y-5">
+            <div class="p-5 bg-[var(--accent-light)]/30 border-t border-[var(--accent-light)] space-y-4">
                 <div class="flex justify-between items-center">
                     <div>
-                        <p class="text-[0.95rem] font-bold text-[#5C4F45]">국민은행 123456-78-901234</p>
-                        <p class="text-[0.8rem] text-[#8A7B70] mt-1">예금주 : 이현권</p>
+                        <p class="text-[0.95rem] font-bold">토스뱅크 1000-1347-2979</p>
+                        <p class="text-[0.8rem] text-[var(--text-light)] mt-1">예금주 : 이현권</p>
                     </div>
-                    <button onclick="copyToClipboard('12345678901234')" class="text-xs bg-white border border-[#D4C4B7] text-[#5C4F45] px-4 py-2 rounded-lg hover:bg-[#F2EBE4] transition shadow-sm">복사</button>
+                    <button onclick="copyToClipboard('100013472979')" class="text-xs bg-white border border-[var(--accent)] px-4 py-2 rounded-lg hover:bg-[var(--accent-light)] transition shadow-sm">복사</button>
+                </div>
+                <!-- 계좌가 없는 분들은 이름만 표시 -->
+                <div class="flex justify-between items-center border-t border-[var(--accent-light)]/50 pt-4">
+                    <div>
+                        <p class="text-[0.9rem] font-medium text-[var(--text-light)]">혼주 : 이치호</p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-[0.9rem] font-medium text-[var(--text-light)]">혼주 : 정순단</p>
+                    </div>
                 </div>
             </div>
         </details>
 
-        <details class="group bg-white rounded-2xl shadow-sm border border-[#F2EBE4] overflow-hidden">
-            <summary class="p-5 flex justify-between items-center cursor-pointer font-bold text-[#5C4F45] select-none">
-                신부측 계좌번호
-                <i class="ph ph-caret-down transition-transform group-open:rotate-180 text-[#8A7B70]"></i>
+        <!-- 신부측 계좌번호 -->
+        <details class="group bg-white rounded-2xl shadow-sm border border-[var(--accent-light)] overflow-hidden">
+            <summary class="p-5 flex justify-between items-center cursor-pointer font-bold select-none">
+                신부측 마음 전하실 곳
+                <i class="ph ph-caret-down transition-transform group-open:rotate-180 text-[var(--text-light)]"></i>
             </summary>
-            <div class="p-5 bg-[#FBF9F6] border-t border-[#F2EBE4] space-y-5">
+            <div class="p-5 bg-[var(--accent-light)]/30 border-t border-[var(--accent-light)] space-y-5">
                 <div class="flex justify-between items-center">
                     <div>
-                        <p class="text-[0.95rem] font-bold text-[#5C4F45]">우리은행 1002-123-456789</p>
-                        <p class="text-[0.8rem] text-[#8A7B70] mt-1">예금주 : 박지윤</p>
+                        <p class="text-[0.95rem] font-bold">기업은행 306-042-412-02-017</p>
+                        <p class="text-[0.8rem] text-[var(--text-light)] mt-1">예금주 : 박지윤</p>
                     </div>
-                    <button onclick="copyToClipboard('1002123456789')" class="text-xs bg-white border border-[#D4C4B7] text-[#5C4F45] px-4 py-2 rounded-lg hover:bg-[#F2EBE4] transition shadow-sm">복사</button>
+                    <button onclick="copyToClipboard('30604241202017')" class="text-xs bg-white border border-[var(--accent)] px-4 py-2 rounded-lg hover:bg-[var(--accent-light)] transition shadow-sm">복사</button>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-[0.95rem] font-bold">국민은행 073-21-1020-724</p>
+                        <p class="text-[0.8rem] text-[var(--text-light)] mt-1">예금주 : 박영순 (혼주)</p>
+                    </div>
+                    <button onclick="copyToClipboard('073211020724')" class="text-xs bg-white border border-[var(--accent)] px-4 py-2 rounded-lg hover:bg-[var(--accent-light)] transition shadow-sm">복사</button>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-[0.95rem] font-bold">신한은행 110-415-447928</p>
+                        <p class="text-[0.8rem] text-[var(--text-light)] mt-1">예금주 : 유은숙 (혼주)</p>
+                    </div>
+                    <button onclick="copyToClipboard('110415447928')" class="text-xs bg-white border border-[var(--accent)] px-4 py-2 rounded-lg hover:bg-[var(--accent-light)] transition shadow-sm">복사</button>
                 </div>
             </div>
         </details>
@@ -343,7 +378,6 @@
     <section class="py-16 px-4 reveal mb-10 text-center">
         <h2 class="cursive-title mb-8">Gallery</h2>
         
-        <!-- 갤러리 이미지 (클릭 기능 추가를 위한 클래스 gallery-img 적용) -->
         <div class="grid grid-cols-3 gap-[4px]">
             <img src="images/gallery1.jpg" class="gallery-img w-full h-full object-cover aspect-square bg-gray-100 cursor-pointer hover:opacity-90 transition" alt="Gallery 1">
             <img src="images/gallery2.jpg" class="gallery-img w-full h-full object-cover aspect-square bg-gray-100 cursor-pointer hover:opacity-90 transition" alt="Gallery 2">
@@ -360,15 +394,15 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-[#FBF9F6] border-t border-[#F2EBE4] text-center text-sm text-[#8A7B70]">
+    <footer class="py-12 bg-[var(--accent-light)]/30 border-t border-[var(--accent-light)] text-center text-sm text-[var(--text-light)]">
         <p>Created for Hyeongwon & Jiyoon</p>
-        <p class="mt-2 text-xs opacity-70">© 2026 Wedding Invitation</p>
+        <p class="mt-2 text-xs opacity-70">© 2027 Wedding Invitation</p>
     </footer>
 
     <!-- Custom Toast Element -->
     <div id="toast">복사되었습니다.</div>
     
-    <!-- Gallery Modal (사진 확대용 팝업 창, 기본은 hidden 상태) -->
+    <!-- Gallery Modal -->
     <div id="gallery-modal" class="fixed inset-0 z-50 hidden bg-black/95 items-center justify-center p-2 opacity-0 transition-opacity duration-300">
         <button id="modal-close" class="absolute top-6 right-6 text-white text-4xl hover:text-gray-300 z-50">&times;</button>
         <img id="modal-img" src="" class="max-w-full max-h-[90vh] object-contain rounded-sm select-none" alt="Enlarged Photo">
@@ -379,7 +413,7 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         
-        // 1. Scroll Animation (Intersection Observer)
+        // 1. Scroll Animation
         const observerOptions = {
             root: null,
             rootMargin: "0px",
@@ -399,8 +433,8 @@
             observer.observe(element);
         });
 
-        // 2. Countdown Timer
-        const weddingDate = new Date("November 21, 2026 12:30:00").getTime();
+        // 2. Countdown Timer (2027년 2월 20일 오후 4시 50분으로 수정)
+        const weddingDate = new Date("February 20, 2027 16:50:00").getTime();
 
         const timerInterval = setInterval(function() {
             const now = new Date().getTime();
@@ -431,29 +465,26 @@
         const modalImg = document.getElementById('modal-img');
         const galleryImages = document.querySelectorAll('.gallery-img');
         
-        // 이미지 클릭 시 모달 열기
         galleryImages.forEach(img => {
             img.addEventListener('click', () => {
-                modalImg.src = img.src; // 클릭한 이미지의 경로를 모달 이미지에 복사
+                modalImg.src = img.src; 
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
-                document.body.classList.add('prevent-scroll'); // 배경 스크롤 방지
+                document.body.classList.add('prevent-scroll'); 
                 
-                // 애니메이션 효과를 위해 아주 약간의 지연 후 opacity 변경
                 setTimeout(() => {
                     modal.classList.remove('opacity-0');
                 }, 10);
             });
         });
 
-        // 모달 영역 아무데나 클릭하면 닫기
         modal.addEventListener('click', () => {
             modal.classList.add('opacity-0');
             setTimeout(() => {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
-                document.body.classList.remove('prevent-scroll'); // 스크롤 원상복구
-            }, 300); // fade-out 시간만큼 대기
+                document.body.classList.remove('prevent-scroll');
+            }, 300); 
         });
     });
 
